@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ========== EDITING GUIDE: PRODUCTS PAGE (products.html) ==========
+  • PAGE TITLE / SUBTITLE: Edit <h1> and <p> inside .page-hero (below) for the heading and short description.
+  • SEARCH PLACEHOLDER: Edit the input placeholder in .products-search if you want different search hint text.
+  • SORT OPTIONS: The <select id="productSort"> options (Default, Price Low→High, Price High→Low) are in script.js; sort applies across ALL pages of products.
+  • ADDING A NEW PRODUCT BOX:
+    1. Copy the full <article class="product-card" ...> ... </article> block of any product (including data-product-name and data-price).
+    2. Paste it inside #productsGrid, before the closing </div> of #productsGrid.
+    3. Edit: data-product-name="Your Product Name", data-price="123" (number for sorting).
+    4. Edit: .product-image — add <img src="path/to/image.jpg" alt="Product name"> or leave "Image" placeholder.
+    5. Edit: <h3> product name, <p class="product-desc"> description, <span class="product-price-value">₱123</span> and the unit (e.g. " / kg").
+    6. Edit: the Enquire <a href="contact.html?enquiry=Product+Name"> so enquiry matches the product name.
+  • EDITING AN EXISTING PRODUCT: Update data-price and .product-price-value together (same number); update h3, .product-desc, and Enquire link as needed.
+  • PAGINATION: 3 full rows per page (9 products per page). Adding more products automatically adds more pages; Previous/Next and "Page X of Y" are below the grid. Sorting works across all pages (order is global).
+  • FOOTER: Edit .footer-links, .footer-contact-info, .footer-copyright the same way as on the home page.
+  ===================================================================
+-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products — FruitWorld Cebu</title>
+  <link rel="icon" href="https://i.postimg.cc/rmwF27Zb/FRUITWORLD-STACKED-GREEN-(WITH-BACKGROUND).png" class="favicon" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">FruitWorld Cebu</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero" aria-labelledby="products-heading">
+      <h1 id="products-heading">Our Products</h1>
+      <p>Premium imported produce, sourced from trusted growers and delivered fresh to Cebu.</p>
+    </section>
+
+    <section class="products-section section-reveal" aria-label="Product catalog">
+      <div class="container">
+        <!-- Search: filters products by name in real time (see script.js). Sort: reorders by data-price (update data-price and .product-price-value when changing price). -->
+        <div class="products-toolbar">
+          <div class="products-search-wrap">
+            <label for="productSearch" class="visually-hidden">Search products</label>
+            <input type="search" id="productSearch" class="products-search" placeholder="Search products by name..." autocomplete="off" aria-label="Search products by name">
+          </div>
+          <div class="products-sort-wrap">
+            <label for="productSort" class="products-sort-label">Sort by</label>
+            <select id="productSort" class="products-sort" aria-label="Sort products by price">
+              <option value="default">Default order</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+        <div class="products-grid" id="productsGrid">
+          <!-- Each product: data-product-name, data-price (number for sort). Edit .product-price-value, h3, .product-desc, Enquire link. To add a product, copy a full <article class="product-card"> block. -->
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Premium Navel Oranges" data-price="150">
+            <div class="product-image"><!-- Replace with: <img src="your-image.jpg" alt="Premium Navel Oranges"> -->Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Premium Navel Oranges</h3>
+              <p class="product-desc" itemprop="description">Sweet, seedless oranges perfect for juicing or snacking. Sourced from select orchards.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱150</span> / box</p>
+              <a href="contact.html?enquiry=Premium+Navel+Oranges" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Red Globe Grapes" data-price="220">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Red Globe Grapes</h3>
+              <p class="product-desc" itemprop="description">Large, crisp grapes with a sweet finish. Ideal for fruit platters and desserts.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱220</span> / kg</p>
+              <a href="contact.html?enquiry=Red+Globe+Grapes" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Hass Avocados" data-price="180">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Hass Avocados</h3>
+              <p class="product-desc" itemprop="description">Creamy, nutrient-rich avocados. Perfect for salads, toast, and smoothies.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱180</span> / piece</p>
+              <a href="contact.html?enquiry=Hass+Avocados" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Fuji Apples" data-price="190">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Fuji Apples</h3>
+              <p class="product-desc" itemprop="description">Crisp and sweet apples with a long shelf life. Great for snacking and baking.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱190</span> / kg</p>
+              <a href="contact.html?enquiry=Fuji+Apples" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Kent Mangoes" data-price="250">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Kent Mangoes</h3>
+              <p class="product-desc" itemprop="description">Sweet, fiber-rich mangoes with minimal strings. A tropical favorite.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱250</span> / kg</p>
+              <a href="contact.html?enquiry=Kent+Mangoes" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Dole Pineapples" data-price="200">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Dole Pineapples</h3>
+              <p class="product-desc" itemprop="description">Golden, juicy pineapples. Perfect for fresh cuts, drinks, and grilling.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱200</span> / piece</p>
+              <a href="contact.html?enquiry=Dole+Pineapples" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Strawberries" data-price="280">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Strawberries</h3>
+              <p class="product-desc" itemprop="description">Bright red, sweet strawberries. Ideal for desserts, breakfast, and beverages.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱280</span> / box</p>
+              <a href="contact.html?enquiry=Strawberries" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Watermelons" data-price="120">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Watermelons</h3>
+              <p class="product-desc" itemprop="description">Refreshing, hydrating watermelons. Great for events and summer refreshments.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱120</span> / kg</p>
+              <a href="contact.html?enquiry=Watermelons" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Blueberries" data-price="320">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Blueberries</h3>
+              <p class="product-desc" itemprop="description">Antioxidant-rich blueberries. Perfect for smoothies, baking, and healthy snacking.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱320</span> / punnet</p>
+              <a href="contact.html?enquiry=Blueberries" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Cherries" data-price="380">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Cherries</h3>
+              <p class="product-desc" itemprop="description">Sweet, plump cherries. Ideal for snacking, baking, and garnishing.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱380</span> / kg</p>
+              <a href="contact.html?enquiry=Cherries" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Kiwi" data-price="160">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Kiwi</h3>
+              <p class="product-desc" itemprop="description">Tangy-sweet kiwifruit. Great for fruit salads and smoothies.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱160</span> / piece</p>
+              <a href="contact.html?enquiry=Kiwi" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Pomegranate" data-price="240">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Pomegranate</h3>
+              <p class="product-desc" itemprop="description">Juicy arils packed with antioxidants. Perfect for juices and toppings.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱240</span> / piece</p>
+              <a href="contact.html?enquiry=Pomegranate" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Dragon Fruit" data-price="200">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Dragon Fruit</h3>
+              <p class="product-desc" itemprop="description">Mild, refreshing tropical fruit. Ideal for bowls and drinks.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱200</span> / piece</p>
+              <a href="contact.html?enquiry=Dragon+Fruit" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Lychee" data-price="290">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Lychee</h3>
+              <p class="product-desc" itemprop="description">Sweet, floral lychees. A tropical treat for snacking and desserts.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱290</span> / kg</p>
+              <a href="contact.html?enquiry=Lychee" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Passion Fruit" data-price="210">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Passion Fruit</h3>
+              <p class="product-desc" itemprop="description">Tart, aromatic passion fruit. Perfect for juices and desserts.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱210</span> / kg</p>
+              <a href="contact.html?enquiry=Passion+Fruit" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Persimmon" data-price="170">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Persimmon</h3>
+              <p class="product-desc" itemprop="description">Sweet, honey-like persimmons. Great for eating fresh or in salads.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱170</span> / piece</p>
+              <a href="contact.html?enquiry=Persimmon" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+
+          <article class="product-card" itemscope itemtype="https://schema.org/Product" data-product-name="Raspberries" data-price="350">
+            <div class="product-image">Image</div>
+            <div class="product-info">
+              <h3 itemprop="name">Raspberries</h3>
+              <p class="product-desc" itemprop="description">Tart-sweet raspberries. Ideal for desserts, jams, and smoothies.</p>
+              <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="price" class="product-price-value">₱350</span> / punnet</p>
+              <a href="contact.html?enquiry=Raspberries" class="btn btn-primary">Enquire</a>
+            </div>
+          </article>
+        </div>
+        <p class="products-no-results" id="productsNoResults" role="status" aria-live="polite" hidden>No products match your search.</p>
+        <!-- Pagination: 3 rows per page; sort applies across all pages. See script.js PRODUCTS_PER_PAGE. -->
+        <nav class="products-pagination" id="productsPagination" aria-label="Product pages">
+          <button type="button" class="products-pagination-btn" id="productsPrev" aria-label="Previous page">Previous</button>
+          <span class="products-pagination-info" id="productsPageInfo" aria-live="polite">Page 1 of 1</span>
+          <button type="button" class="products-pagination-btn" id="productsNext" aria-label="Next page">Next</button>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a href="https://www.instagram.com/fruitworldcebu/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+        <a href="https://www.facebook.com/share/16rdHk55aP/?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+      </div>
+      <p class="footer-contact-info">
+        <a href="tel:+63322562398">+63 32 256 2398</a> · <a href="mailto:fruitworldcebu@outlook.com">fruitworldcebu@outlook.com</a><br>
+        <span class="footer-address">46 Plaridel St, Cebu City, 6000, Cebu, Philippines</span>
+      </p>
+      <p class="footer-copyright">&copy; FruitWorld Cebu. Trusted fresh produce supplier since 1997.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
