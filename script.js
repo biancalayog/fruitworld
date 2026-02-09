@@ -313,8 +313,7 @@
           }
         })
         .catch(function (err) {
-          console.error("Fetch failed:", err);
-          // submitViaIframe();
+          submitViaIframe();
         });
     });
   }
