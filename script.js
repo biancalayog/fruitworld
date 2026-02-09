@@ -250,9 +250,9 @@
         btn.disabled = true;
       }
       var formData = new FormData(contactForm);
-      var body = new URLSearchParams();
+      var data = {};
       formData.forEach(function (value, key) {
-        body.append(key, value);
+        data[key] = value;
       });
       function showSuccess() {
         if (btn) {
@@ -299,10 +299,13 @@
       }
       fetch(CONTACT_FORM_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body.toString()
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
       })
-        .then(function (response) {
+        .then(async function (response) {
+          const text = await response.text();
+          console.log("Status:", response.status, "Body:", text);
+
           if (response.ok) {
             showSuccess();
           } else {
@@ -310,7 +313,8 @@
           }
         })
         .catch(function () {
-          submitViaIframe();
+          console.error("Fetch failed:", err);
+          // submitViaIframe();
         });
     });
   }
