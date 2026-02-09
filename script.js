@@ -302,15 +302,19 @@
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(body)
       })
-        .then(function (response) {
+        .then(async function (response) {
+          const text = await response.text();
+          console.log("Status:", response.status, "Body:", text);
+
           if (response.ok) {
             showSuccess();
           } else {
             showTryAgain();
           }
         })
-        .catch(function () {
-          submitViaIframe();
+        .catch(function (err) {
+          console.error("Fetch failed:", err);
+          // submitViaIframe();
         });
     });
   }
