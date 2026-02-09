@@ -250,9 +250,9 @@
         btn.disabled = true;
       }
       var formData = new FormData(contactForm);
-      var data = {};
+      var body = {};
       formData.forEach(function (value, key) {
-        data[key] = value;
+        body[key] = value;
       });
       function showSuccess() {
         if (btn) {
@@ -299,13 +299,10 @@
       }
       fetch(CONTACT_FORM_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(body)
       })
-        .then(async function (response) {
-          const text = await response.text();
-          console.log("Status:", response.status, "Body:", text);
-
+        .then(function (response) {
           if (response.ok) {
             showSuccess();
           } else {
@@ -313,8 +310,7 @@
           }
         })
         .catch(function () {
-          console.error("Fetch failed:", err);
-          // submitViaIframe();
+          submitViaIframe();
         });
     });
   }
