@@ -133,12 +133,16 @@ section {
   font-weight: 700;
   font-size: 1.35rem;
   color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .nav-logo img {
-  height: 50px;
-  width: auto;
   display: block;
+  width: auto;
+  height: 45px;
+  max-width: 140px;
 }
 
 .nav-logo:focus-visible {
