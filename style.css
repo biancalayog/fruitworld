@@ -123,6 +123,35 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/*
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 1rem 1.25rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -155,7 +184,7 @@ section {
   gap: 1.5rem;
   list-style: none;
 }
-
+*/
 .nav-links a {
   color: var(--color-text);
   font-weight: 500;
