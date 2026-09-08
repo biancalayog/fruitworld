@@ -125,10 +125,10 @@ section {
   justify-content: space-between;
 
   width: 100%;
-  max-width: 1200px;
+  max-width: 1150px;
   margin: 0 auto;
 
-  padding: 0.75rem 2rem;
+  padding: 0.75rem 2.5rem;
 }
 
 .nav-logo {
